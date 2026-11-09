@@ -1,0 +1,166 @@
+/* Rainbow Unicorn Theme: reference stylesheet.
+   Retarget the selectors to the artifact's existing markup; don't change its HTML.
+
+   Fonts (put in <head>):
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Nunito:wght@600;700;800&family=Source+Code+Pro:wght@500;600&display=swap" rel="stylesheet">
+*/
+
+:root {
+  color-scheme: light;
+  --page: #fff8fd;
+  --card: #fff;
+  --text: #3a2a5c;
+  --muted: #6b5a8a;
+  --border: #f0d9f5;
+  --accent: #c2338a;
+  --rainbow: linear-gradient(90deg, #ff6b6b, #ffa94d, #ffd43b, #69db7c, #4dabf7, #9775fa, #f06595);
+  --pastel-rainbow: linear-gradient(90deg, #ffe3e3, #fff0cf, #fff9db, #e6fcf5, #e7f5ff, #f3f0ff, #ffe3f3);
+  --shadow: 0 6px 18px rgba(194, 51, 138, .08);
+  --radius: 22px;
+  --p1: #ffc9c9; --p2: #ffe8a3; --p3: #b2f2bb; --p4: #d0bfff;
+  --font-head: "Fredoka", "Nunito", system-ui, sans-serif;
+  --font-body: "Nunito", system-ui, sans-serif;
+  --font-mono: "Source Code Pro", ui-monospace, monospace;
+}
+
+/* Page */
+html { background: var(--page); }
+body {
+  margin: 0;
+  padding: 8px 16px 56px; /* 8px leaves room for the stripe */
+  color: var(--text);
+  font: 600 15px/1.55 var(--font-body);
+  background:
+    radial-gradient(circle at 0% 0%, #ffe3f3 0, transparent 45%),
+    radial-gradient(circle at 100% 0%, #e0f0ff 0, transparent 45%),
+    radial-gradient(circle at 50% 100%, #fff3cf 0, transparent 50%),
+    var(--page);
+  background-attachment: fixed;
+}
+body::before {
+  content: "";
+  position: fixed; inset: 0 0 auto 0;
+  height: 8px;
+  background: var(--rainbow);
+  z-index: 100;
+}
+main, .container { max-width: 1100px; margin: 0 auto; }
+section + section { margin-top: 56px; }
+
+a { color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+code, kbd, samp, .id, .num, td.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.id { color: var(--accent); }
+.muted, small, figcaption { color: var(--muted); }
+
+/* Headings */
+h1, h2, h3, h4 { font-family: var(--font-head); font-weight: 600; color: var(--text); line-height: 1.15; }
+h1 { font-size: clamp(32px, 5vw, 52px); margin: 32px 0 16px; width: fit-content; }
+h1 .h1-text, h1 { /* gradient text; wrap the text in a span if the 🦄 should keep its colors */
+  background: var(--rainbow);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+h1::after { content: " 🦄"; -webkit-text-fill-color: initial; }
+
+h2 { font-size: 26px; margin: 0 0 20px; }
+h2::after {
+  content: ""; display: block;
+  width: 84px; height: 5px; margin-top: 8px;
+  border-radius: 999px; background: var(--rainbow);
+}
+
+.eyebrow {
+  font-family: var(--font-head); font-weight: 600;
+  text-transform: uppercase; letter-spacing: .08em; font-size: 13px;
+  color: var(--accent);
+}
+.eyebrow::before { content: "🌈 "; }
+section:nth-of-type(4n+2) .eyebrow::before { content: "✨ "; }
+section:nth-of-type(4n+3) .eyebrow::before { content: "🌸 "; }
+section:nth-of-type(4n+4) .eyebrow::before { content: "🌟 "; }
+
+/* Containers */
+.card, table, li.item, .panel {
+  background: var(--card);
+  border: 3px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.card { padding: 20px; border-top: 8px solid var(--cat, var(--p4)); }
+
+/* Tables */
+table { border-collapse: separate; border-spacing: 0; overflow: hidden; width: 100%; }
+th {
+  font-family: var(--font-head); font-weight: 600;
+  text-transform: uppercase; letter-spacing: .05em; font-size: 13px;
+  text-align: left;
+}
+/* gradient on the row so it spans all header cells */
+thead tr, tr:first-child:has(> th) { background: linear-gradient(90deg, #fff0f6, #f3f0ff, #e7f5ff); }
+th, td { padding: 10px 14px; border-bottom: 2px solid var(--border); }
+tr:last-child td { border-bottom: 0; }
+tr.group td, tr.group th { background: var(--pastel-rainbow); font-family: var(--font-head); }
+.table-wrap { overflow-x: auto; }
+
+/* Pills: nav links, tags, status */
+nav a, .tag, .pill, .status {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 2px solid var(--border);
+  background: var(--card);
+  text-decoration: none;
+  font-weight: 700;
+}
+.status.green    { background: #d3f9d8; color: #1b7a34; border-color: transparent; }
+.status.amber    { background: #fff0cf; color: #b35400; border-color: transparent; }
+.status.blue     { background: #e0f0ff; color: #1c5d99; border-color: transparent; }
+.status.lavender { background: #efe5ff; color: #6a3fb5; border-color: transparent; }
+
+/* Key figures */
+.figure, .stat {
+  background: var(--card);
+  border: 3px solid var(--p1);
+  border-radius: 20px;
+  padding: 16px 18px;
+  box-shadow: 0 4px 0 var(--p1);
+}
+.figure:nth-child(4n+2), .stat:nth-child(4n+2) { border-color: var(--p2); box-shadow: 0 4px 0 var(--p2); }
+.figure:nth-child(4n+3), .stat:nth-child(4n+3) { border-color: var(--p3); box-shadow: 0 4px 0 var(--p3); }
+.figure:nth-child(4n+4), .stat:nth-child(4n+4) { border-color: var(--p4); box-shadow: 0 4px 0 var(--p4); }
+.figure .value, .stat .value { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 28px; }
+
+/* Notes */
+.note, aside, blockquote {
+  border: 3px dashed #e9c9f2;
+  border-radius: 20px;
+  padding: 14px 18px;
+  background: var(--card);
+}
+
+/* Numbered items: round badges */
+ol.steps { list-style: none; counter-reset: step; padding: 0; }
+ol.steps > li { counter-increment: step; position: relative; padding-left: 48px; margin-bottom: 12px; }
+ol.steps > li::before {
+  content: counter(step);
+  position: absolute; left: 0; top: 0;
+  width: 34px; height: 34px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-family: var(--font-head); font-weight: 600;
+  background: var(--p1);
+}
+ol.steps > li:nth-child(4n+2)::before { background: var(--p2); }
+ol.steps > li:nth-child(4n+3)::before { background: var(--p3); }
+ol.steps > li:nth-child(4n+4)::before { background: var(--p4); }
+
+/* Footer */
+footer {
+  margin-top: 56px; padding-top: 20px;
+  border-top: 5px solid transparent;
+  border-image: var(--rainbow) 1;
+  color: var(--muted);
+  text-align: center;
+}
+footer::after { content: " 🦄🌈✨"; }

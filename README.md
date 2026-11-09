@@ -76,3 +76,7 @@ plugins/quackpack/
    ```bash
    claude plugin validate .
    ```
+
+## License
+
+[MIT](LICENSE)

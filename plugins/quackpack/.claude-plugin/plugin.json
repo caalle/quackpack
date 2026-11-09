@@ -5,5 +5,6 @@
   "author": { "name": "caalle" },
   "homepage": "https://github.com/caalle/quackpack",
   "repository": "https://github.com/caalle/quackpack",
+  "license": "MIT",
   "keywords": ["skills", "user-stories", "requirements", "artifacts", "theme"]
 }

@@ -1,0 +1,12 @@
+{
+  "name": "quackpack",
+  "description": "caalle's skills for Claude Code.",
+  "owner": { "name": "caalle", "url": "https://github.com/caalle" },
+  "plugins": [
+    {
+      "name": "quackpack",
+      "source": "./plugins/quackpack",
+      "description": "Skills for product work and artifacts: gap analysis before user stories, and a pastel rainbow-unicorn theme for HTML artifacts."
+    }
+  ]
+}

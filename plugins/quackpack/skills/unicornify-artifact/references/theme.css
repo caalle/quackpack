@@ -1,5 +1,5 @@
-/* Rainbow Unicorn Theme: reference stylesheet.
-   Retarget the selectors to the artifact's existing markup; don't change its HTML.
+/* Unicornify theme: reference stylesheet and single source of truth for the look.
+   Retarget the selectors to the page's existing markup; don't change its HTML.
 
    Fonts (put in <head>):
    <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,7 +37,6 @@ body {
     radial-gradient(circle at 100% 0%, #e0f0ff 0, transparent 45%),
     radial-gradient(circle at 50% 100%, #fff3cf 0, transparent 50%),
     var(--page);
-  background-attachment: fixed;
 }
 body::before {
   content: "";
@@ -57,7 +56,7 @@ code, kbd, samp, .id, .num, td.num { font-family: var(--font-mono); font-variant
 /* Headings */
 h1, h2, h3, h4 { font-family: var(--font-head); font-weight: 600; color: var(--text); line-height: 1.15; }
 h1 { font-size: clamp(32px, 5vw, 52px); margin: 32px 0 16px; width: fit-content; }
-h1 .h1-text, h1 { /* gradient text; wrap the text in a span if the 🦄 should keep its colors */
+h1 { /* gradient text; the ::after below resets the fill so the 🦄 keeps its colors */
   background: var(--rainbow);
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -88,6 +87,7 @@ section:nth-of-type(4n+4) .eyebrow::before { content: "🌟 "; }
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
+/* Set --cat per card category in the page's CSS, e.g. `.card.sales { --cat: var(--p1); }` */
 .card { padding: 20px; border-top: 8px solid var(--cat, var(--p4)); }
 
 /* Tables */
@@ -103,6 +103,8 @@ th, td { padding: 10px 14px; border-bottom: 2px solid var(--border); }
 tr:last-child td { border-bottom: 0; }
 tr.group td, tr.group th { background: var(--pastel-rainbow); font-family: var(--font-head); }
 .table-wrap { overflow-x: auto; }
+/* No wrapper may be added, so let the table itself scroll on narrow screens */
+@media (max-width: 640px) { table { display: block; overflow-x: auto; } }
 
 /* Pills: nav links, tags, status */
 nav a, .tag, .pill, .status {
@@ -123,7 +125,7 @@ nav a, .tag, .pill, .status {
 .figure, .stat {
   background: var(--card);
   border: 3px solid var(--p1);
-  border-radius: 20px;
+  border-radius: var(--radius);
   padding: 16px 18px;
   box-shadow: 0 4px 0 var(--p1);
 }
@@ -135,7 +137,7 @@ nav a, .tag, .pill, .status {
 /* Notes */
 .note, aside, blockquote {
   border: 3px dashed #e9c9f2;
-  border-radius: 20px;
+  border-radius: var(--radius);
   padding: 14px 18px;
   background: var(--card);
 }

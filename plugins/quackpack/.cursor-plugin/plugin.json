@@ -1,10 +1,10 @@
 {
   "name": "quackpack",
-  "version": "0.1.0",
-  "description": "Skills for product work and artifacts: gap analysis before user stories, and a pastel rainbow-unicorn theme for HTML artifacts.",
+  "version": "0.2.0",
+  "description": "Skills for product work and HTML pages: find the open decisions in a requirement before writing the story, and unicornify a page in a pastel rainbow theme.",
   "author": { "name": "caalle" },
-  "homepage": "https://github.com/caalle/quackpack",
-  "repository": "https://github.com/caalle/quackpack",
+  "homepage": "https://github.com/caalle/skills",
+  "repository": "https://github.com/caalle/skills",
   "license": "MIT",
-  "keywords": ["skills", "user-stories", "requirements", "artifacts", "theme"]
+  "keywords": ["skills", "user-stories", "requirements", "product-discovery", "html", "theme"]
 }

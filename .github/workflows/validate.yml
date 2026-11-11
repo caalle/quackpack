@@ -16,18 +16,18 @@ jobs:
       - name: Validate marketplace and plugin manifests
         run: |
           claude plugin validate .
-          claude plugin validate plugins/quackpack
+          claude plugin validate .claude-plugin/plugin.json
       - name: Check that both plugin manifests have the same version
         run: |
-          claude=$(jq -r .version plugins/quackpack/.claude-plugin/plugin.json)
-          cursor=$(jq -r .version plugins/quackpack/.cursor-plugin/plugin.json)
+          claude=$(jq -r .version .claude-plugin/plugin.json)
+          cursor=$(jq -r .version .cursor-plugin/plugin.json)
           if [ "$claude" != "$cursor" ]; then
             echo "version mismatch: .claude-plugin=$claude .cursor-plugin=$cursor"
             exit 1
           fi
       - name: Check that every skill folder has a SKILL.md with name and description
         run: |
-          for dir in plugins/quackpack/skills/*/; do
+          for dir in skills/*/; do
             file="$dir/SKILL.md"
             test -f "$file" || { echo "missing $file"; exit 1; }
             grep -q '^name: ' "$file" || { echo "$file has no name"; exit 1; }

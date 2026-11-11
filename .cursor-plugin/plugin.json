@@ -1,6 +1,6 @@
 {
-  "name": "quackpack",
-  "version": "0.2.0",
+  "name": "caalle",
+  "version": "0.3.0",
   "description": "Skills for product work and HTML pages: find the open decisions in a requirement before writing the story, and unicornify a page in a pastel rainbow theme.",
   "author": { "name": "caalle" },
   "homepage": "https://github.com/caalle/skills",

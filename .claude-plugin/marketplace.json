@@ -4,8 +4,8 @@
   "owner": { "name": "caalle", "url": "https://github.com/caalle" },
   "plugins": [
     {
-      "name": "quackpack",
-      "source": "./plugins/quackpack",
+      "name": "caalle",
+      "source": "./",
       "description": "Skills for product work and HTML pages: find the open decisions in a requirement before writing the story, and unicornify a page in a pastel rainbow theme."
     }
   ]

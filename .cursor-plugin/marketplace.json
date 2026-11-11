@@ -1,15 +1,15 @@
 {
-  "name": "quackpack",
+  "name": "caalle",
   "owner": { "name": "caalle" },
   "metadata": {
-    "description": "caalle's skills for Cursor.",
+    "description": "caalle's agent skills for Cursor.",
     "pluginRoot": "plugins"
   },
   "plugins": [
     {
       "name": "quackpack",
       "source": "quackpack",
-      "description": "Skills for product work and artifacts: gap analysis before user stories, and a pastel rainbow-unicorn theme for HTML artifacts."
+      "description": "Skills for product work and HTML pages: find the open decisions in a requirement before writing the story, and unicornify a page in a pastel rainbow theme."
     }
   ]
 }
